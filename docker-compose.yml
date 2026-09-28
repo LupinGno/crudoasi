@@ -1,0 +1,17 @@
+services:
+  mysql:
+    image: mysql:9.0
+    container_name: mysql90
+    environment:
+      - MYSQL_ROOT_PASSWORD=clave
+      - MYSQL_DATABASE=ug
+    ports:
+      - "3307:3306"
+
+  backend:
+    build: .
+    container_name: mi_servidor_node
+    ports:
+      - "3000:3000"
+    depends_on:
+      - mysql
